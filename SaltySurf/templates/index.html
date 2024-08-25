@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<!-- Add a big banner to welcome user -->
+<div class="jumbotron jumbotron-fluid card card-image" style="background-image: url({{url_for('static', filename='img/background.jpg')}}); background-size: cover; height: 100vh;">
+    <div class="text-black text-center py-5 px-4">
+        <div>
+            <h1 class="display-3 font-weight-bold">Salty Surf Shop</h1>
+            <p class="lead text-dark">The worst day of surfing is better than the best day at work!</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block main %}
+<style>
+#product-carousel {
+  border: 5px solid black;
+}
+
+.carousel-inner {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.carousel-inner img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+</style>
+
+<section class="bg-dark py-5">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h2 class="display-4 font-weight-bold text-white">Athlete Spotlight</h2>
+        </div>
+    </div>
+</section>
+
+<!-- Product carousel container -->
+<section class="bg-transparent py-5">
+<div id="product-carousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#product-carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#product-carousel" data-slide-to="1"></li>
+      <li data-target="#product-carousel" data-slide-to="2"></li>
+    </ol>
+  
+    <!-- Carousel inner -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <!-- Product 1 content -->
+        <img src="\static\img\billabong3.jpg" alt="Athlete 1" class="img-fluid">
+      </div>
+      <div class="carousel-item">
+        <!-- Product 2 content -->
+        <img src="\static\img\athlete3.jpg" alt="Athlete 2" class="img-fluid">
+      </div>
+      <div class="carousel-item">
+        <!-- Product 3 content -->
+        <img src="\static\img\athlete1.jpg" alt="Athlete 3" class="img-fluid">
+      </div>
+    </div>
+  
+    <!-- Controls -->
+    <a class="carousel-control-prev" href="#product-carousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#product-carousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+</section>
+<!-- Display the surfboards to the user -->
+<section class="bg-dark py-5">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h2 class="display-4 text-white">Choose one of the three top Surfboard brands:</h2>
+        </div>
+        <div class="card-deck">
+            {% for brand in brands %}
+            <div class="card mb-4 border border-dark">
+                <img class="card-img-top" src="{{ url_for('static', filename='img/'+brand.image) }}" alt="Card image">
+                <div class="card-body">
+                    <h4 class="card-title">{{brand.name}}</h4>
+                    <p class="card-text">{{brand.description}}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{url_for('main.brandsurfboard', brandid=brand.id) }}" class="btn btn-secondary">Surfboards</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

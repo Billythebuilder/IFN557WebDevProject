@@ -1,0 +1,64 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main{
+    background-size: cover;
+    height: 100vh;
+    background-position: 50% 50%;
+    width: 100%;
+}
+
+.main-image {
+    width: 100%;
+    height: fit-content;
+}
+
+
+.card-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  
+  .card {
+    flex: 1;
+  }
+
+#product-carousel {
+    margin: 20px auto;
+    width: 80%;
+  }
+  
+  .carousel-inner {
+    height: 300px; 
+  }
+  
+  .carousel-item {
+    text-align: center;
+  }
+  
+  .carousel-item img {
+    width: 200px;
+    height: 100px; /* Set the height of the product image */
+    
+  }
+  
+  .carousel-control-prev,.carousel-control-next {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .carousel-control-prev:hover,.carousel-control-next:hover {
+    background-color: #444;
+  }
+

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<section>
+
+    <div class="text-white text-center">
+        <div>
+            <p></p>
+            <p class="h3 text-white mb-4">Browse our wide selection of surboards!</p>
+        </div>
+    </div>
+
+    <div class="card-columns">
+        <!-- each tour is a bootstrap card -->
+        {% for surfboard in surfboard%}
+        <div class="card-wrapper">
+        <div class="card">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/'+surfboard.image) }}" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{ surfboard.name }}</h4>
+                <p class="card-text">{{ surfboard.description }}</p>
+                {% if surfboard.boardlevel == 'Beginner'%}
+                <span class="badge badge-primary">{{surfboard.boardlevel}}</span>
+                {% endif %}
+                {% if surfboard.boardlevel == 'Intermediate'%}
+                <span class="badge badge-warning">{{surfboard.boardlevel}}</span>
+                {% endif %}
+                {% if surfboard.boardlevel == 'Expert'%}
+                <span class="badge badge-danger">{{surfboard.boardlevel}}</span>
+                {% endif %}
+            </div>
+            <div class="card-footer">
+                <form action="{{ url_for('main.order') }}">
+                    <input type="hidden" id="surfboard_id" name="surfboard_id" value="{{ surfboard.id }}">
+                    <input class="btn btn-secondary" type="submit" value="Add to Basket">
+                </form>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <style>
+    .card-columns {
+      background-color: #343a40;
+    }
+    
+    .card {
+      border: 2px solid;
+      border-image-slice: 1;
+      border-width: 5px;
+      border-image-source: linear-gradient(to right, #C2DFFF, #FFE1C2);
+      border-radius: 5px;
+      margin: 10px;
+    }
+    </style>
+
+</section>
+{% endblock %}
+

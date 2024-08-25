@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% import "bootstrap4/form.html" as wtf %}
+
+{% block main %}
+    <section>  
+        <div class="container text-white">
+            <div class="row">
+                <div class = "col-12">
+                    <h1>Checkout</h1>
+                    <p>
+                        You're halfway to shredding! Finalise your details and your board will be on the way. Thank you! 
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col-6">
+                    {{ wtf.render_form(form) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
